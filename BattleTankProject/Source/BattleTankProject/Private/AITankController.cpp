@@ -35,6 +35,16 @@ void AAITankController::BeginPlay()
 	}
 }
 
+void AAITankController::Tick(float DeltaSeconds)
+{
+	Super::Tick(DeltaSeconds);
+	if (GetControlledTank() && GetPlayerTank())
+	{
+		GetControlledTank()->AimAt(GetPlayerTank()->GetActorLocation()); // Get player location
+	}
+
+}
+
 ATank * AAITankController::GetPlayerTank() const
 {
 	auto* PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
