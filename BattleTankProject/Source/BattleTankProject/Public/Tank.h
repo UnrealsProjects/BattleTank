@@ -2,9 +2,14 @@
 
 #pragma once
 
-#include "TankAimingComponent.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
+
+//Forwar declarations
+class UTankBarrel;
+class UTankTurret;
+class UTankAimingComponent;
+class ATankProjectile;
 
 UCLASS()
 class BATTLETANKPROJECT_API ATank : public APawn
@@ -21,7 +26,7 @@ public:
 	void SetTurretReference(UTankTurret* TurretToSet);
 
 	UFUNCTION(BlueprintCallable, Category = Firing)
-		void Fire();
+	void Fire();
 
 protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
@@ -40,5 +45,13 @@ private:
 	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
 	UPROPERTY(EditAnywhere, Category = Firing)
-		float LaunchSpeed = 100000.f; // Sensible start value of 1000 m/s
+	float LaunchSpeed = 100000.f; // Sensible start value of 1000 m/s
+
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<ATankProjectile> ProjectileBlueprint;
+
+	UTankBarrel* Barrel = nullptr;
+
+	float ReloadTimeInSeconds = 3.f;
+	double LastTimeFire = 0;
 };
