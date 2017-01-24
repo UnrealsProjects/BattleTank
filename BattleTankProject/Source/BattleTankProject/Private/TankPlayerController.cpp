@@ -6,16 +6,6 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-
-	auto ControlledTank = GetControlledTank();
-	if (!ControlledTank)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Player Controller has not found a possesing"));
-	}
-	else 
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Player Controller possessing: %s"), *(ControlledTank->GetName()));
-	}
 }
 
 void ATankPlayerController::Tick(float DeltaTime)

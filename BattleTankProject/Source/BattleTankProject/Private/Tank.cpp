@@ -1,10 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "BattleTankProject.h"
 #include "TankBarrel.h"
 #include "TankTurret.h"
 #include "TankProjectile.h"
 #include "TankAimingComponent.h"
-#include "BattleTankProject.h"
+#include "TankMovementComponent.h"
 #include "Tank.h"
 
 
@@ -27,6 +28,9 @@ ATank::ATank()
 
 	// No need protection when adding a pointer
 	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
+
+	// No need protection when adding a pointer
+	TankMovementComponent = CreateDefaultSubobject<UTankMovementComponent>(FName("Movement Component"));
 }
 
 void ATank::AimAt(FVector HitLocation)
