@@ -14,12 +14,11 @@ class BATTLETANKPROJECT_API AAITankController : public AAIController
 {
 	GENERATED_BODY()
 	
-public:
-	ATank* GetControlledTank() const;
-	
+private:
 	virtual void BeginPlay() override;
 
 	virtual void Tick(float DeltaSeconds) override;
 
-	ATank* GetPlayerTank() const;
+	// How long Ai Tank can be of Player
+	float AcceptanceRadius = 1.0f;
 };

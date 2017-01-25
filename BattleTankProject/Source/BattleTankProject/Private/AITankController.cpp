@@ -3,12 +3,6 @@
 #include "BattleTankProject.h"
 #include "AITankController.h"
 
-
-ATank* AAITankController::GetControlledTank() const
-{
-	return Cast<ATank>(GetPawn());
-}
-
 void AAITankController::BeginPlay()
 {
 	Super::BeginPlay();
@@ -23,7 +17,8 @@ void AAITankController::Tick(float DeltaSeconds)
 
 	if (PlayerTank)
 	{
-		// TODO Move towards player
+		//Move towards player
+		MoveToActor(PlayerTank, AcceptanceRadius);
 
 		ControlledTank->AimAt(PlayerTank->GetActorLocation()); // Get player location
 
@@ -31,12 +26,5 @@ void AAITankController::Tick(float DeltaSeconds)
 		ControlledTank->Fire();
 	}
 
-}
-
-ATank * AAITankController::GetPlayerTank() const
-{
-	auto* PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
-	if (!PlayerPawn) { return nullptr; }
-	return Cast<ATank>(PlayerPawn);
 }
 
