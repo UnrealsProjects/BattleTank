@@ -13,15 +13,20 @@ UCLASS()
 class BATTLETANKPROJECT_API ATankPlayerController : public APlayerController
 {
 	GENERATED_BODY()
-	
 public:
-	ATank* GetControlledTank() const;
-	
-	virtual void BeginPlay() override;
+	void Tick(float DeltaTime);
 
-	virtual void Tick(float DeltaTime) override;
+protected:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	ATank* GetControlledTank() const;
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 
 private:
+
+	virtual void BeginPlay() override;
+
 	void AimTowardsEnemies();
 	bool GetSightRayHitLocation(FVector&) const; // Method to check if aim hit something
 
