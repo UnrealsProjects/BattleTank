@@ -2,9 +2,7 @@
 
 #include "BattleTankProject.h"
 #include "TankBarrel.h"
-#include "TankTurret.h"
 #include "TankProjectile.h"
-#include "TankAimingComponent.h"
 #include "Tank.h"
 
 
@@ -15,10 +13,9 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = true;
 }
 
-void ATank::AimAt(FVector HitLocation)
+void ATank::BeginPlay()
 {
-	if (!ensure(TankAimingComponent)) { return; }
-	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
+	Super::BeginPlay();
 }
 
 void ATank::Fire()

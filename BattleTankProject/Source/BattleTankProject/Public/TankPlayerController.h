@@ -6,6 +6,9 @@
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
 
+//Forward declaration
+class UTankAimingComponent;
+
 /**
  * 
  */
@@ -17,8 +20,6 @@ public:
 	void Tick(float DeltaTime);
 
 protected:
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	ATank* GetControlledTank() const;
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 	void FoundAimingComponent(UTankAimingComponent* AimCompRef);
@@ -42,4 +43,6 @@ private:
 	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 1000000.f;
 
+	//Aiming component
+	UTankAimingComponent* TankAimingComponent;
 };

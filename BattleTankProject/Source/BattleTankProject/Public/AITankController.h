@@ -2,7 +2,6 @@
 
 #pragma once
 
-#include "Tank.h"
 #include "AIController.h"
 #include "AITankController.generated.h"
 
@@ -21,4 +20,5 @@ private:
 
 	// How long Ai Tank can be of Player
 	float AcceptanceRadius = 1.0f;
+
 };
