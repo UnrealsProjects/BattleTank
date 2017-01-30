@@ -25,7 +25,7 @@ void AAITankController::Tick(float DeltaSeconds)
 	AimingComponent->AimAt(PlayerTank->GetActorLocation()); // Get player location
 
 	// AI fire at player
-	//ControlledTank->Fire();
+	AimingComponent->Fire();
 
 }
 
